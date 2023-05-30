@@ -50,7 +50,7 @@ def get_widget_body(ticker: str, interval: str, studies: list):
     return widget_str
 
 # Read the content of the clipboard
-clipboard_content = pyperclip.paste()
+#clipboard_content = pyperclip.paste()
 clipboard_content = "MSFT,PANW,APP, ARLO, ARRY, BMI, CRSP, FSLR, GRBK, IMGN, IMVT, IONQ, KRYS, LTH, LYV, NNOX, PETQ, PRTA, ROIV, RXRX, SDGR, SHOP"
 
 
