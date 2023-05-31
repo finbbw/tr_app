@@ -66,41 +66,32 @@ if 'page' not in st.session_state:
     st.session_state.page = 0
 
 # Create a "Next" button in the sidebar
-if st.sidebar.button('Next') or st.button('Next Daily Charts') or st.button('Next Weekly Charts'):
+if st.sidebar.button('Next'):
     st.session_state.page = (st.session_state.page + 1) % pages
 
 # Calculate start and end symbols for the current page
 start_symbol = st.session_state.page * 4
 end_symbol = start_symbol + 4
 
-# Create a row of daily charts for each symbol on the current page
-cols_daily = st.columns(4)
+# Create a row of daily and weekly charts for each symbol on the current page
 for i in range(start_symbol, min(end_symbol, len(symbols))):
     symbol = symbols[i]
+    cols_daily = st.columns(4)
     with cols_daily[i-start_symbol]:
         components.html(
             get_widget_header() + get_widget_body(symbol, "D", daily_studies) + get_widget_footer(), 
             height=WIDGET_HEIGHT, 
             width=WIDGET_WIDTH,
         )
-
-# Insert a button after the firstrow
-if st.button('Next Daily Charts'):
-
-    st.session_state.page = (st.session_state.page + 1) % pages
-
-# Create a row of weekly charts for each symbol on the current page
-cols_weekly = st.columns(4)
-for i in range(start_symbol, min(end_symbol, len(symbols))):
-    symbol = symbols[i]
-    with cols_weekly[i-start_symbol]:
+    
+    cols_weekly = st.columns(4)
+    with cols_weekly[i-start_symbolquote("Create a row of daily and weekly charts for each symbol on the current page", "width=WIDGET_WIDTH,")
         components.html(
             get_widget_header() + get_widget_body(symbol, "W", weekly_studies) + get_widget_footer(), 
             height=WIDGET_HEIGHT, 
             width=WIDGET_WIDTH,
         )
 
-# Insert a button after the second row
-if st.button('Next Weekly Charts'):
-
+# Insert a button after every 4 symbols
+if st.button('Next', key='NextMain'):
     st.session_state.page = (st.session_state.page + 1) % pages
