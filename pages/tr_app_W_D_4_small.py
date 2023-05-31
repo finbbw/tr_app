@@ -85,9 +85,6 @@ for i in range(start_symbol, min(end_symbol, len(symbols))):
         )
     
     cols_weekly = st.columns(4)
-    with colsI apologize, the message was cut-off again. Here is the complete code snippet:
-
-```python
     with cols_weekly[i-start_symbol]:
         components.html(
             get_widget_header() + get_widget_body(symbol, "W", weekly_studies) + get_widget_footer(), 
