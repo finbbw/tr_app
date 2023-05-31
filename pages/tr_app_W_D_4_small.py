@@ -73,21 +73,22 @@ if st.sidebar.button('Next'):
 start_symbol = st.session_state.page * 4
 end_symbol = start_symbol + 4
 
-# Iterate over symbols in the current page and create a new line every 4 symbols, then do it again for weekly chart
+# Create a row of daily charts for each symbol on the current page
+cols_daily = st.columns(4)
 for i in range(start_symbol, min(end_symbol, len(symbols))):
     symbol = symbols[i]
-    cols = st.columns(4)
-    with cols[i-start_symbol]:
+    with cols_daily[i-start_symbol]:
         components.html(
             get_widget_header() + get_widget_body(symbol, "D", daily_studies) + get_widget_footer(), 
             height=WIDGET_HEIGHT, 
             width=WIDGET_WIDTH,
         )
 
-for i in range(start_symbol, min(end_symbol,len(symbols))):
+# Create a row of weeklycharts for each symbol on the current page
+cols_weekly = st.columns(4)
+for i in range(start_symbol, min(end_symbol, len(symbols))):
     symbol = symbols[i]
-    cols = st.columns(4)
-    with cols[i-start_symbol]:
+    with cols_weekly[i-start_symbol]:
         components.html(
             get_widget_header() + get_widget_body(symbol, "W", weekly_studies) + get_widget_footer(), 
             height=WIDGET_HEIGHT, 
