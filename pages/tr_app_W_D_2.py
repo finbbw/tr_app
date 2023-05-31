@@ -75,7 +75,7 @@ if st.sidebar.button('Next'):
 # Calculate start and end symbols for the current page
 start_symbol = st.session_state.page * 2  # changed from * 4 to * Sorry, the previous response was cut-off. Here's the continuation:
 
-```python
+
 # Calculate start and end symbols for the current page
 start_symbol = st.session_state.page * 2  # changed from * 4 to * 2
 end_symbol = start_symbol + 2  # changed from + 4 to + 2
