@@ -85,16 +85,10 @@ for i in range(start_symbol, min(end_symbol, len(symbols))):
         )
     
     cols_weekly = st.columns(4)
-    with cols_weekly[i-start_symbol]:
-        components.html(
-            get_widget_header() + get_widget_body(symbol, "W", weekly_studies) + get# Let's continue the code from where it was cut off
-quote("get_widget_header() + get_widget_body(symbol, \"W\", weekly_studies) + get_widget_footer(),", 
-      "height=WIDGET_HEIGHT,\nwidth=WIDGET_WIDTH,\n)")
+    with colsI apologize, the message was cut-off again. Here is the complete code snippet:
 
-# After this line, add the button
-quote("if i == end_symbol - 1 and i != len(symbols) - 1:  # Add button if it is the last of the set and not the final symbol\n" +
-      "    if st.button('Next', key=f'NextMain{i}'):\n" +
-      "        st.session_state.page = (st.session_state.page + 1) % pages", "")
+```python
+    with cols_weekly[i-start_symbol]:
         components.html(
             get_widget_header() + get_widget_body(symbol, "W", weekly_studies) + get_widget_footer(), 
             height=WIDGET_HEIGHT, 
