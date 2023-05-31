@@ -66,7 +66,7 @@ if 'page' not in st.session_state:
     st.session_state.page = 0
 
 # Create a "Next" button in the sidebar
-if st.sidebar.button('Next'):
+if st.sidebar.button('Next') or st.button('Next Daily Charts') or st.button('Next Weekly Charts'):
     st.session_state.page = (st.session_state.page + 1) % pages
 
 # Calculate start and end symbols for the current page
@@ -84,7 +84,12 @@ for i in range(start_symbol, min(end_symbol, len(symbols))):
             width=WIDGET_WIDTH,
         )
 
-# Create a row of weeklycharts for each symbol on the current page
+# Insert a button after the firstrow
+if st.button('Next Daily Charts'):
+
+    st.session_state.page = (st.session_state.page + 1) % pages
+
+# Create a row of weekly charts for each symbol on the current page
 cols_weekly = st.columns(4)
 for i in range(start_symbol, min(end_symbol, len(symbols))):
     symbol = symbols[i]
@@ -94,3 +99,8 @@ for i in range(start_symbol, min(end_symbol, len(symbols))):
             height=WIDGET_HEIGHT, 
             width=WIDGET_WIDTH,
         )
+
+# Insert a button after the second row
+if st.button('Next Weekly Charts'):
+
+    st.session_state.page = (st.session_state.page + 1) % pages
