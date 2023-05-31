@@ -85,13 +85,17 @@ for i in range(start_symbol, min(end_symbol, len(symbols))):
         )
     
     cols_weekly = st.columns(4)
-    with cols_weekly[i-start_symbolquote("Create a row of daily and weekly charts for each symbol on the current page", "width=WIDGET_WIDTH,")
+    with cols_weekly[i-start_symbol]:
         components.html(
-            get_widget_header() + get_widget_body(symbol, "W", weekly_studies) + get_widget_footer(), 
+            get_widget_header() + get_widget_bodyI apologize for the abrupt cut-off in the code provided. Here's the continuation of the code:
+
+```python
+            (symbol, "W", weekly_studies) + get_widget_footer(), 
             height=WIDGET_HEIGHT, 
             width=WIDGET_WIDTH,
         )
 
-# Insert a button after every 4 symbols
-if st.button('Next', key='NextMain'):
-    st.session_state.page = (st.session_state.page + 1) % pages
+    # Insert a button after every 4 symbols
+    if i == end_symbol - 1 and i != len(symbols) - 1:  # Add button if it is the last of the set and not the final symbol
+        if st.button('Next', key=f'NextMain{i}'):
+            st.session_state.page = (st.session_state.page + 1) % pages
