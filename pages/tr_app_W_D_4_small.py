@@ -75,18 +75,8 @@ end_symbol = start_symbol + 4
 
 # Iterate over symbols in the current page and create a new line every 4 symbols, then do it again for weekly chart
 for i in range(start_symbol, min(end_symbol, len(symbols))):
+    symbol = symbols[i]
     cols = st.columns(4)
-    symbol = symbols[i]
-    with cols[i-start_symbol]:
-        components.html(
-            get_widget_header() + get_widget_body(symbol, "W", weekly_studies) + get_widget_footer(), 
-            height=WIDGET_HEIGHT, 
-            width=WIDGET_WIDTH,
-        )
-
-for i in range(start_symbol, min(end_symbol, len(symbols))):
-    cols =st.columns(4)
-    symbol = symbols[i]
     with cols[i-start_symbol]:
         components.html(
             get_widget_header() + get_widget_body(symbol, "D", daily_studies) + get_widget_footer(), 
@@ -94,3 +84,12 @@ for i in range(start_symbol, min(end_symbol, len(symbols))):
             width=WIDGET_WIDTH,
         )
 
+for i in range(start_symbol, min(end_symbol,len(symbols))):
+    symbol = symbols[i]
+    cols = st.columns(4)
+    with cols[i-start_symbol]:
+        components.html(
+            get_widget_header() + get_widget_body(symbol, "W", weekly_studies) + get_widget_footer(), 
+            height=WIDGET_HEIGHT, 
+            width=WIDGET_WIDTH,
+        )
