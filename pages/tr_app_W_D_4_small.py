@@ -74,8 +74,9 @@ start_symbol = st.session_state.page * 4
 end_symbol = start_symbol + 4
 
 # Define columns outside the loop
-cols_daily = st.columns(4)
+#cols_daily = st.columns(4)
 cols_weekly = st.columns(4)
+cols_daily = st.columns(4)
 
 # Create a row of daily and weekly charts for each symbol on the current page
 for i in range(start_symbol, min(end_symbol, len(symbols))):
