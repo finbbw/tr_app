@@ -73,18 +73,21 @@ if st.sidebar.button('Next'):
 start_symbol = st.session_state.page * 4
 end_symbol = start_symbol + 4
 
+# Define columns outside the loop
+cols_daily = st.columns(4)
+cols_weekly = st.columns(4)
+
 # Create a row of daily and weekly charts for each symbol on the current page
 for i in range(start_symbol, min(end_symbol, len(symbols))):
     symbol = symbols[i]
-    cols_daily = st.columns(4)
+
     with cols_daily[i-start_symbol]:
         components.html(
             get_widget_header() + get_widget_body(symbol, "D", daily_studies) + get_widget_footer(), 
             height=WIDGET_HEIGHT, 
             width=WIDGET_WIDTH,
         )
-    
-    cols_weekly = st.columns(4)
+
     with cols_weekly[i-start_symbol]:
         components.html(
             get_widget_header() + get_widget_body(symbol, "W", weekly_studies) + get_widget_footer(), 
@@ -96,3 +99,4 @@ for i in range(start_symbol, min(end_symbol, len(symbols))):
     if i == end_symbol - 1 and i != len(symbols) - 1:  # Add button if it is the last of the set and not the final symbol
         if st.button('Next', key=f'NextMain{i}'):
             st.session_state.page = (st.session_state.page + 1) % pages
+
