@@ -49,11 +49,14 @@ def get_widget_body(ticker: str, interval: str, studies: list):
     widget_str = json.dumps(widget)
     return widget_str
 
-# Read the content of the clipboard
-clipboard_content = "MSFT,PANW,PLTR,NVDA,SMCI,RMBS,TAST,OPRA,ACLS,AVGO,HUBS,IAS,ELF,XM,ENTG,VRT,MNDY,GRBK,SHOP,LI,COCO,AMAT,GOOG"
+default_symbols = "MSFT,PANW,PLTR,NVDA,SMCI,RMBS,TAST,OPRA,ACLS,AVGO,HUBS,IAS,ELF,XM,ENTG,VRT,MNDY,GRBK,SHOP,LI,COCO,AMAT,GOOG"
+
+# Add a text input field at the top of the app
+input_symbols = st.text_input("Enter symbols (comma-separated):", default_symbols)
 
 # Split the input string by comma and remove any leading/trailing spaces
-symbols = [symbol.strip() for symbol in clipboard_content.split(',')]
+symbols = [symbol.strip() for symbol in input_symbols.split(',')]
+
 
 weekly_studies = [{"id": "MASimple@tv-basicstudies", "inputs": {"length": length}} for length in [10, 30]]
 daily_studies = [{"id": "MASimple@tv-basicstudies", "inputs": {"length": length}} for length in [10, 20, 50, 200]]
