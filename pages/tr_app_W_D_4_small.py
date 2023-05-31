@@ -35,7 +35,7 @@ def get_widget_body(ticker: str, interval: str, studies: list):
       "timezone": "exchange",
       "theme": WIDGET_THEME,
       "style": "1",
-      "range": "YTD" if interval == "D" else "60M",
+      "range": "YTD" if interval == "D" else "40M",
       "withdateranges": True,
       "hide_side_toolbar": False,
       "allow_symbol_change": True,
