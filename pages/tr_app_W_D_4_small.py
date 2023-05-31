@@ -96,8 +96,12 @@ for i in range(start_symbol, min(end_symbol, len(symbols))):
             width=WIDGET_WIDTH,
         )
 
+    
+            
     # Insert a button after every 4 symbols
     if i == end_symbol - 1 and i != len(symbols) - 1:  # Add button if it is the last of the set and not the final symbol
         if st.button('Next', key=f'NextMain{i}'):
             st.session_state.page = (st.session_state.page + 1) % pages
+            st.experimental_rerun()
+        
 
