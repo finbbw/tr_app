@@ -5,7 +5,7 @@ import math
 
 st.set_page_config(layout="wide")
 
-WIDGET_HEIGHT = 500
+WIDGET_HEIGHT = 350
 WIDGET_WIDTH = 600
 WIDGET_THEME = "dark"
 
