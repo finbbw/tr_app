@@ -25,7 +25,7 @@ def get_widget_footer():
       </div>
     '''
 
-@st.cache_data
+@st.cache
 def get_widget_body(ticker: str, interval: str, studies: list):
     widget = {
       "width": WIDGET_WIDTH,
@@ -87,8 +87,16 @@ for i in range(start_symbol, min(end_symbol, len(symbols))):
     cols_weekly = st.columns(4)
     with cols_weekly[i-start_symbol]:
         components.html(
-            get_widget_header(),
-            (symbol, "W", weekly_studies) + get_widget_footer(), 
+            get_widget_header() + get_widget_body(symbol, "W", weekly_studies) + get# Let's continue the code from where it was cut off
+quote("get_widget_header() + get_widget_body(symbol, \"W\", weekly_studies) + get_widget_footer(),", 
+      "height=WIDGET_HEIGHT,\nwidth=WIDGET_WIDTH,\n)")
+
+# After this line, add the button
+quote("if i == end_symbol - 1 and i != len(symbols) - 1:  # Add button if it is the last of the set and not the final symbol\n" +
+      "    if st.button('Next', key=f'NextMain{i}'):\n" +
+      "        st.session_state.page = (st.session_state.page + 1) % pages", "")
+        components.html(
+            get_widget_header() + get_widget_body(symbol, "W", weekly_studies) + get_widget_footer(), 
             height=WIDGET_HEIGHT, 
             width=WIDGET_WIDTH,
         )
